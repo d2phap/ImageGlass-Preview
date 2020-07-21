@@ -8,7 +8,8 @@
   xmlns:iot2="http://schemas.microsoft.com/appx/manifest/iot/windows10/2" 
   xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
   xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio"
-  IgnorableNamespaces="uap mp genTemplate uap5 desktop4 iot2">
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap mp genTemplate uap5 desktop4 iot2 rescap">
 
   <Identity
     Name="E5E0903F-BB09-40DA-BCFD-D391D7402F9D"
@@ -44,7 +45,7 @@
         Description="ms-resource:AppDescription"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" uap5:Optional="true" />
       </uap:VisualElements>
 
       <Extensions>
@@ -53,11 +54,11 @@
             Executable="ImageGlass.exe"
             EntryPoint="ImageGlass.App">
             <uap5:AppExecutionAlias>
-              <uap5:ExecutionAlias Alias="ImageGlass.exe" />
+              <uap5:ExecutionAlias Alias="igp.exe" />
             </uap5:AppExecutionAlias>
           </uap5:Extension>
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="imageglass-preview">
+          <uap:Protocol Name="igp">
             <uap:Logo>Assets\Icon.png</uap:Logo>
             <uap:DisplayName>ImageGlass</uap:DisplayName>
           </uap:Protocol>
@@ -68,6 +69,8 @@
 
   <Capabilities>
     <Capability Name="internetClient" />
+    <rescap:Capability Name="broadFileSystemAccess" />
+    <rescap:Capability Name="inputInjectionBrokered" />
   </Capabilities>
 
   <genTemplate:Metadata>
