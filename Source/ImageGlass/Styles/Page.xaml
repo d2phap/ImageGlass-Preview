@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  xmlns:media="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 
-    <Style TargetType="Page" x:Key="PageStyle">
-        <Setter Property="Background" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
-    </Style>
-
+  <Style TargetType="Page" x:Key="PageStyle">
+    <Setter Property="Background" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+  </Style>
 </ResourceDictionary>

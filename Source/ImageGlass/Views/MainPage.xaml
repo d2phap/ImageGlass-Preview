@@ -4,25 +4,121 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Style="{StaticResource PageStyle}"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    x:DefaultBindMode="OneWay"
+    MinWidth="192"
+    MinHeight="48"
+    Loaded="Page_Loaded"
     mc:Ignorable="d">
-    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
+    <Grid x:Name="ContentArea">
         <Grid.RowDefinitions>
-            <RowDefinition Height="48" />
+            <!--<RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />-->
         </Grid.RowDefinitions>
 
-        <TextBlock
-            Grid.Row="0"
-            x:Uid="Main_Title"
-            Style="{StaticResource PageTitleStyle}" />
         <Grid
-            Grid.Row="1" 
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--
-                The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.
-            -->
+            x:Name="pageTitleBar"
+            Canvas.ZIndex="100"
+            Grid.Row="0"
+            VerticalAlignment="Top"
+            Style="{StaticResource OverlayStyle}">
+            <!-- Width of the padding columns is set in LayoutMetricsChanged handler. -->
+            <!-- Using padding columns instead of Margin ensures that the background
+           paints the area under the caption control buttons (for transparent buttons). -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="titleBarLeftCln" Width="0"/>
+                <ColumnDefinition/>
+                <ColumnDefinition x:Name="titleBarRightCln" Width="0"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid
+                x:Name="titleBarLeftContent"
+                Grid.Column="1"
+                Margin="10 0 0 0"
+                Padding="5 3"
+                CornerRadius="0.5"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left">
+                <TextBlock
+                    x:Name="titleBarText"
+                    Text="{x:Bind Path=ViewModel.TitleText}"
+                    TextTrimming="CharacterEllipsis"
+                    TextWrapping="NoWrap"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                    Style="{StaticResource CaptionTextBlockStyle}"/>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <Button
+                    x:Name="btnOpen" 
+                    IsHitTestVisible="True"
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Center"
+                    Content="Open"
+                    Style="{StaticResource ButtonStyle}"
+                    Click="BtnOpen_Click"/>
+            </Grid>
+            
         </Grid>
+
+        
+        <!--Toolbar-->
+        <Grid
+            x:Name="toolBar"
+            Canvas.ZIndex="99"
+            VerticalAlignment="Top"
+            Style="{StaticResource OverlayStyle}">
+        </Grid>
+
+
+        <!--Thumbnail bar-->
+        <Grid
+            x:Name="thumbBar"
+            Canvas.ZIndex="98"
+            VerticalAlignment="Bottom"
+            Style="{StaticResource OverlayStyle}">
+        </Grid>
+
+
+        <!--Main content-->
+        <ScrollViewer
+            x:Name="viewer" 
+            Grid.Row="1"
+            ZoomMode="Enabled" 
+            HorizontalScrollMode="Auto" 
+            VerticalScrollMode="Auto" 
+            MaxZoomFactor="100" 
+            HorizontalScrollBarVisibility="Hidden"
+            VerticalScrollBarVisibility="Hidden"
+            AllowDrop="True"
+            ViewChanging="viewer_ViewChanging"
+            ViewChanged="viewer_ViewChanged"
+            PointerWheelChanged="viewer_PointerWheelChanged"
+            DragOver="Viewer_DragOver"
+            Drop="Viewer_Drop">
+
+            <Grid
+                x:Name="viewerGrid"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center">
+                <controls:ImageEx 
+                    x:Name="picMain"
+                      Stretch="None" 
+                      IsCacheEnabled="True"
+                      PointerWheelChanged="picMain_PointerWheelChanged"
+                      ImageExOpened="PicMain_ImageOpened"
+                      ImageExFailed="PicMain_ImageFailed"
+                      ManipulationMode="All"
+                      ManipulationCompleted="Image_ManipulationCompleted"
+                      ManipulationDelta="Image_ManipulationDelta">
+                    <controls:ImageEx.RenderTransform>
+                        <CompositeTransform x:Name="picMainTransform" />
+                    </controls:ImageEx.RenderTransform>
+                </controls:ImageEx>
+            </Grid>
+        </ScrollViewer>
+
     </Grid>
 </Page>

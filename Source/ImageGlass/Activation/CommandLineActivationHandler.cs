@@ -23,7 +23,7 @@ namespace ImageGlass.Activation
 
             // The directory where the command-line activation request was made.
             // This is typically not the install location of the app itself, but could be any arbitrary path.
-            string activationPath = operation.CurrentDirectoryPath;
+            // string activationPath = operation.CurrentDirectoryPath;
 
             //// TODO WTS: parse the cmdLineString to determine what to do.
             //// If doing anything async, get a deferral first.
@@ -33,7 +33,7 @@ namespace ImageGlass.Activation
             //// }
             ////
             //// If the arguments warrant showing a different view on launch, that can be done here.
-            //// NavigationService.Navigate(typeof(CmdLineActivationSamplePage), cmdLineString);
+            NavigationService.Navigate(typeof(MainPage), cmdLineString);
             //// If you do nothing, the app will launch like normal.
 
             await Task.CompletedTask;
