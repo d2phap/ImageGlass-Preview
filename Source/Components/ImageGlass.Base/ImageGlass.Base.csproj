@@ -121,7 +121,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseApp.cs" />
-    <Compile Include="Dirs.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\ImageGlass.Base.rd.xml" />

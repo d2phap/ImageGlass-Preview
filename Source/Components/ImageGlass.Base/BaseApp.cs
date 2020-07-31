@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace ImageGlass.Base {
     /// <summary>
@@ -17,17 +19,21 @@ namespace ImageGlass.Base {
 
 
         /// <summary>
-        /// Gets the path based on the startup folder of ImageGlass Preview.
+        /// Gets StorageFolder based on the startup folder of ImageGlass Preview.
         /// </summary>
-        /// <param name="paths"></param>
+        /// <param name="dir">Subfolder name</param>
         /// <returns></returns>
-        public static string StartUpDir(params string[] paths) {
-            var dir = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+        public static async Task<StorageFolder> GetLocalDirAsync(Dirs dir = Dirs._Root) {
+            if (dir == Dirs._Root) {
+                return ApplicationData.Current.LocalFolder;
+            }
 
-            var newPaths = paths.ToList();
-            newPaths.Insert(0, dir);
+            if (dir == Dirs._Temp) {
+                return ApplicationData.Current.TemporaryFolder;
+            }
 
-            return Path.Combine(newPaths.ToArray());
+
+            return await ApplicationData.Current.LocalFolder.CreateFolderAsync(dir.ToString(), CreationCollisionOption.OpenIfExists);
         }
 
 

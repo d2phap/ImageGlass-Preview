@@ -1,8 +1,9 @@
 ﻿using System;
-
+using System.Diagnostics;
 using ImageGlass.Services;
-
+using ImageGlass.Settings;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 
 namespace ImageGlass
@@ -20,9 +21,20 @@ namespace ImageGlass
         {
             InitializeComponent();
             UnhandledException += OnAppUnhandledException;
+            Suspending += OnSuspending;
+
 
             // Deferred execution until used. Check https://docs.microsoft.com/dotnet/api/system.lazy-1 for further info on Lazy<T> class.
             _activationService = new Lazy<ActivationService>(CreateActivationService);
+        }
+
+        private void OnSuspending(object sender, Windows.ApplicationModel.SuspendingEventArgs e) {
+            // save configs
+            Config.Write();
+        }
+
+        private ActivationService CreateActivationService() {
+            return new ActivationService(this, typeof(Views.MainPage));
         }
 
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
@@ -44,9 +56,5 @@ namespace ImageGlass
             // For more info see https://docs.microsoft.com/uwp/api/windows.ui.xaml.application.unhandledexception
         }
 
-        private ActivationService CreateActivationService()
-        {
-            return new ActivationService(this, typeof(Views.MainPage));
-        }
     }
 }

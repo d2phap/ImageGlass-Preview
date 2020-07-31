@@ -17,11 +17,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+using ImageGlass.Base;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
 using System.Text.Json;
+using Windows.Storage;
 
 namespace ImageGlass.Settings {
     public class Config {
@@ -52,8 +54,8 @@ namespace ImageGlass.Settings {
         /// <summary>
         /// Loads and parsse configs from file
         /// </summary>
-        public static void Load() {
-            var items = _source.LoadUserConfigs();
+        public static async void Load() {
+            var items = await _source.LoadUserConfigs();
 
             // Number values
             SampleSetting = items.GetValue(nameof(SampleSetting), SampleSetting);
@@ -64,15 +66,16 @@ namespace ImageGlass.Settings {
         /// <summary>
         /// Parses and writes configs to file
         /// </summary>
-        public static void Write() {
-            var jsonFile = Windows.Storage.ApplicationData.Current.LocalFolder.Path + _source.UserFilename;
+        public static async void Write() {
+            var localFolder = await BaseApp.GetLocalDirAsync();
 
-            using var fs = File.Create(jsonFile);
+            using var fs = await localFolder.OpenStreamForWriteAsync(_source.UserFilename, CreationCollisionOption.ReplaceExisting);
+
             using var writter = new Utf8JsonWriter(fs, new JsonWriterOptions() {
                 Indented = true
             });
-
-
+            
+            // write JSON to file
             JsonSerializer.Serialize(writter, GetSettingObjects());
         }
 

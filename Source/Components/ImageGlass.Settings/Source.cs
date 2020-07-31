@@ -19,6 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 using ImageGlass.Base;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace ImageGlass.Settings {
     public class Source {
@@ -71,11 +72,12 @@ namespace ImageGlass.Settings {
         /// Loads all config files: default, user, command-lines, admin;
         /// then unify configs.
         /// </summary>
-        public IConfigurationRoot LoadUserConfigs() {
+        public async Task<IConfigurationRoot> LoadUserConfigs() {
             var args = BaseApp.GetCommandLineArgs(CommandLineArgFilterOptions.OnlySettings);
+            var localDir = await BaseApp.GetLocalDirAsync();
 
             var userConfig = new ConfigurationBuilder()
-                .SetBasePath(Windows.Storage.ApplicationData.Current.LocalFolder.Path)
+                .SetBasePath(localDir.Path)
                 .AddJsonFile(DefaultFilename, optional: true)
                 .AddJsonFile(UserFilename, optional: true)
                 .AddCommandLine(args)
