@@ -1,4 +1,5 @@
 ﻿
+using ImageGlass.Settings;
 using ImageGlass.ViewModels;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Microsoft.Toolkit.Uwp.UI.Extensions;
@@ -160,6 +161,12 @@ namespace ImageGlass.Views {
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
             Window.Current.CoreWindow.PointerWheelChanged += CoreWindow_PointerWheelChanged;
+
+            var dlg = new ContentDialog() {
+                Content = Config.SampleSetting.ToString(),
+                CloseButtonText = "Close",
+            };
+            _ = dlg.ShowAsync();
         }
 
         private async void BtnOpen_Click(object sender, RoutedEventArgs e) {

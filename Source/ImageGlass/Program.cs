@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageGlass.Settings;
+using System;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -17,6 +18,10 @@ namespace ImageGlass
         // You may find the `AppInstance.GetActivatedEventArgs()` useful for your app-defined logic.
         public static void Main(string[] args)
         {
+            // load settings from file
+            Config.Load();
+
+
             // If the platform indicates a recommended instance, use that.
             if (AppInstance.RecommendedInstance != null)
             {
