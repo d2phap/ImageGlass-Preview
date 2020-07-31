@@ -39,9 +39,9 @@ namespace ImageGlass.Settings {
         #region ImageGlass settings
 
         /// <summary>
-        /// Gets, sets SampleSetting
+        /// Gets, sets the last opened image file
         /// </summary>
-        public static int SampleSetting { get; set; } = 200;
+        public static string LastImageFile { get; set; } = "";
 
 
         #endregion
@@ -57,8 +57,8 @@ namespace ImageGlass.Settings {
         public static async void Load() {
             var items = await _source.LoadUserConfigs();
 
-            // Number values
-            SampleSetting = items.GetValue(nameof(SampleSetting), SampleSetting);
+            // String values
+            LastImageFile = items.GetValue(nameof(LastImageFile), LastImageFile);
 
         }
 
@@ -90,7 +90,6 @@ namespace ImageGlass.Settings {
         /// <returns></returns>
         private static dynamic GetSettingObjects() {
             var settings = new ExpandoObject();
-
             var infoJson = new {
                 _source.Description,
                 _source.Version
@@ -99,8 +98,8 @@ namespace ImageGlass.Settings {
             settings.TryAdd("Info", infoJson);
 
 
-            // Number values
-            settings.TryAdd(nameof(SampleSetting), SampleSetting);
+            // String values
+            settings.TryAdd(nameof(LastImageFile), LastImageFile);
 
 
             return settings;

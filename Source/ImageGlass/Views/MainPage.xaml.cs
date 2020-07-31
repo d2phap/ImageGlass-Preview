@@ -2,6 +2,7 @@
 using ImageGlass.Base;
 using ImageGlass.Settings;
 using ImageGlass.ViewModels;
+using Microsoft.Toolkit.Uwp.Helpers;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Microsoft.Toolkit.Uwp.UI.Extensions;
 using Microsoft.Toolkit.Uwp.UI.Helpers;
@@ -156,7 +157,9 @@ namespace ImageGlass.Views {
                 picMain.Source = await LoadImage(filename);
             }
             else {
-                picMain.Source = await LoadImage(@"C:\Users\d2pha\Desktop\_photo\manga.heic");
+                var filePath = Config.LastImageFile ?? @"C:\Users\d2pha\Desktop\_photo\manga.heic";
+
+                picMain.Source = await LoadImage(filePath);
             }
         }
 
@@ -204,20 +207,22 @@ namespace ImageGlass.Views {
 
 
             try {
-                using (var stream = await file.OpenAsync(FileAccessMode.Read)) {
-                    if (ext == ".svg") {
-                        var svg = new SvgImageSource();
-                        await svg.SetSourceAsync(stream);
+                using var stream = await file.OpenAsync(FileAccessMode.Read);
 
-                        bitmap = svg;
-                    }
-                    else {
-                        var bmp = new BitmapImage();
-                        await bmp.SetSourceAsync(stream);
+                if (ext == ".svg") {
+                    var svg = new SvgImageSource();
+                    await svg.SetSourceAsync(stream);
 
-                        bitmap = bmp;
-                    }
+                    bitmap = svg;
                 }
+                else {
+                    var bmp = new BitmapImage();
+                    await bmp.SetSourceAsync(stream);
+
+                    bitmap = bmp;
+                }
+
+                Config.LastImageFile = file.Path;
             }
             catch (Exception ex) {
                 // show error
