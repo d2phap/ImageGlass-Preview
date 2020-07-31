@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGlass.Settings", "..\C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{2319D381-383E-4058-AED7-D9540FD866A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGlass.Base", "..\Components\ImageGlass.Base\ImageGlass.Base.csproj", "{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,12 +93,33 @@ Global
 		{844F98B3-B9F9-4012-BBAA-C2FBEB966FCC}.Release|x64.Build.0 = Release|x64
 		{844F98B3-B9F9-4012-BBAA-C2FBEB966FCC}.Release|x86.ActiveCfg = Release|x86
 		{844F98B3-B9F9-4012-BBAA-C2FBEB966FCC}.Release|x86.Build.0 = Release|x86
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Debug|ARM.ActiveCfg = Debug|ARM
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Debug|ARM.Build.0 = Debug|ARM
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Debug|ARM64.Build.0 = Debug|ARM64
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Debug|x64.ActiveCfg = Debug|x64
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Debug|x64.Build.0 = Debug|x64
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Debug|x86.ActiveCfg = Debug|x86
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Debug|x86.Build.0 = Debug|x86
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Release|ARM.ActiveCfg = Release|ARM
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Release|ARM.Build.0 = Release|ARM
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Release|ARM64.ActiveCfg = Release|ARM64
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Release|ARM64.Build.0 = Release|ARM64
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Release|x64.ActiveCfg = Release|x64
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Release|x64.Build.0 = Release|x64
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Release|x86.ActiveCfg = Release|x86
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{844F98B3-B9F9-4012-BBAA-C2FBEB966FCC} = {2319D381-383E-4058-AED7-D9540FD866A3}
+		{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833} = {2319D381-383E-4058-AED7-D9540FD866A3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBD810B8-CB65-4B85-A27B-C8A397129EA5}
