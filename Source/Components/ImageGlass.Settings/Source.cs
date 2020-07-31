@@ -1,5 +1,5 @@
 ﻿/*
-ImageGlass Project - Image viewer for Windows
+ImageGlass Preview project - Image viewer for Windows
 Copyright (C) 2020 DUONG DIEU PHAP
 Project homepage: https://imageglass.org
 
@@ -17,9 +17,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+using ImageGlass.Base;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Linq;
 
 namespace ImageGlass.Settings {
     public class Source {
@@ -29,25 +28,25 @@ namespace ImageGlass.Settings {
         /// <summary>
         /// Gets the user config file name.
         /// </summary>
-        public string UserFilename { get => "igconfig.json"; }
+        public string UserFilename { get => "igp.config.json"; }
 
 
         /// <summary>
         /// Gets the default config file located.
         /// </summary>
-        public string DefaultFilename { get => "igconfig.default.json"; }
+        public string DefaultFilename { get => "igp.config.default.json"; }
 
 
         /// <summary>
         /// Gets the admin config file name.
         /// </summary>
-        public string AdminFilename { get => "igconfig.admin.json"; }
+        public string AdminFilename { get => "igp.config.admin.json"; }
 
 
         /// <summary>
         /// Config file description
         /// </summary>
-        public string Description { get; set; } = "ImageGlass configuration file";
+        public string Description { get; set; } = "ImageGlass Preview configuration file";
 
 
         /// <summary>
@@ -57,7 +56,7 @@ namespace ImageGlass.Settings {
 
 
         /// <summary>
-        /// Gets, sets value indicates that the config file is compatible with this ImageGlass version or not
+        /// Gets, sets value indicates that the config file is compatible with this ImageGlass Preview version or not
         /// </summary>
         public bool IsCompatible { get; set; } = true;
 
@@ -73,13 +72,7 @@ namespace ImageGlass.Settings {
         /// then unify configs.
         /// </summary>
         public IConfigurationRoot LoadUserConfigs() {
-            const string CMD_PREFIX = "--";
-            var args = Environment.GetCommandLineArgs()
-                // find the commands with prefix
-                .Where(cmd => cmd.StartsWith(CMD_PREFIX))
-                // remove the prefix
-                .Select(cmd => cmd.Substring(2))
-                .ToArray();
+            var args = BaseApp.GetCommandLineArgs(CommandLineArgFilterOptions.OnlySettings);
 
             var userConfig = new ConfigurationBuilder()
                 .SetBasePath(Windows.Storage.ApplicationData.Current.LocalFolder.Path)

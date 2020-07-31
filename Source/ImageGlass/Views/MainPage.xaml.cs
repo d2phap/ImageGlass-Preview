@@ -1,4 +1,5 @@
 ﻿
+using ImageGlass.Base;
 using ImageGlass.Settings;
 using ImageGlass.ViewModels;
 using Microsoft.Toolkit.Uwp.UI.Controls;
@@ -148,7 +149,7 @@ namespace ImageGlass.Views {
 
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(1, 1));
 
-            var args = Environment.GetCommandLineArgs();
+            var args = BaseApp.GetCommandLineArgs(CommandLineArgFilterOptions.ExludeSettings);
             if (args.Length > 1) {
                 var filename = args.Last();
 
@@ -170,7 +171,7 @@ namespace ImageGlass.Views {
         }
 
         private async void BtnOpen_Click(object sender, RoutedEventArgs e) {
-
+            
             var openPicker = new FileOpenPicker {
                 ViewMode = PickerViewMode.Thumbnail,
                 SuggestedStartLocation = PickerLocationId.PicturesLibrary

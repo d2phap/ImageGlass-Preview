@@ -246,6 +246,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Components\ImageGlass.Base\ImageGlass.Base.csproj">
+      <Project>{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}</Project>
+      <Name>ImageGlass.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Components\ImageGlass.Settings\ImageGlass.Settings.csproj">
       <Project>{844f98b3-b9f9-4012-bbaa-c2fbeb966fcc}</Project>
       <Name>ImageGlass.Settings</Name>

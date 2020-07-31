@@ -1,5 +1,5 @@
 ﻿/*
-ImageGlass Project - Image viewer for Windows
+ImageGlass Preview project - Image viewer for Windows
 Copyright (C) 2020 DUONG DIEU PHAP
 Project homepage: https://imageglass.org
 
