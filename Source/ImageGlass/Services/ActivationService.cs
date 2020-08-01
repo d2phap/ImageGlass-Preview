@@ -97,7 +97,7 @@ namespace ImageGlass.Services
         private async Task HandleActivationAsync(object activationArgs)
         {
             var activationHandler = GetActivationHandlers()
-                                                .FirstOrDefault(h => h.CanHandle(activationArgs));
+                .FirstOrDefault(h => h.CanHandle(activationArgs));
 
             if (activationHandler != null)
             {
@@ -124,6 +124,7 @@ namespace ImageGlass.Services
         {
             yield return Singleton<SchemeActivationHandler>.Instance;
             yield return Singleton<CommandLineActivationHandler>.Instance;
+            yield return Singleton<FileAssocActivationHandler>.Instance;
         }
 
         private bool IsInteractive(object args)

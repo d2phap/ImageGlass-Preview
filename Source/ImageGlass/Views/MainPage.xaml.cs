@@ -150,16 +150,24 @@ namespace ImageGlass.Views {
 
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(1, 1));
 
-            var args = BaseApp.GetCommandLineArgs(CommandLineArgFilterOptions.ExludeSettings);
-            if (args.Length > 1) {
-                var filename = args.Last();
-
-                picMain.Source = await LoadImage(filename);
+            // open from file association (double click on the file)
+            if (e.Parameter.GetType().FullName == "Windows.Storage.StorageFile") {
+                var file = (StorageFile) e.Parameter;
+                picMain.Source = await LoadImage(file.Path);
             }
             else {
-                var filePath = Config.LastImageFile ?? @"C:\Users\d2pha\Desktop\_photo\manga.heic";
+                var args = BaseApp.GetCommandLineArgs(CommandLineArgFilterOptions.ExludeSettings);
 
-                picMain.Source = await LoadImage(filePath);
+                if (args.Length > 1) {
+                    var filename = args.Last();
+
+                    picMain.Source = await LoadImage(filename);
+                }
+                else {
+                    var filePath = Config.LastImageFile ?? @"C:\Users\d2pha\Desktop\_photo\manga.heic";
+
+                    picMain.Source = await LoadImage(filePath);
+                }
             }
         }
 

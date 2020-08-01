@@ -19,9 +19,10 @@
   <mp:PhoneIdentity PhoneProductId="E5E0903F-BB09-40DA-BCFD-D391D7402F9D" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>ImageGlass</DisplayName>
+    <DisplayName>ImageGlass Preview</DisplayName>
     <PublisherDisplayName>Duong Dieu Phap</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
+    <Description>A modern, versatile image viewer</Description>
   </Properties>
 
   <Dependencies>
@@ -60,9 +61,17 @@
         <uap:Extension Category="windows.protocol">
           <uap:Protocol Name="igp">
             <uap:Logo>Assets\Icon.png</uap:Logo>
-            <uap:DisplayName>ImageGlass</uap:DisplayName>
+            <uap:DisplayName>ImageGlass Preview</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
+          <uap:Extension Category="windows.fileTypeAssociation">
+              <uap:FileTypeAssociation Name=".svg">
+                  <uap:SupportedFileTypes>
+                      <uap:FileType>.svg</uap:FileType>
+                  </uap:SupportedFileTypes>
+                  <uap:DisplayName>ImageGlass Preview SVG file</uap:DisplayName>
+              </uap:FileTypeAssociation>
+          </uap:Extension>
       </Extensions>
     </Application>
   </Applications>

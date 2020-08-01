@@ -56,5 +56,8 @@ namespace ImageGlass
             // For more info see https://docs.microsoft.com/uwp/api/windows.ui.xaml.application.unhandledexception
         }
 
+        protected override async void OnFileActivated(FileActivatedEventArgs args) {
+            await ActivationService.ActivateAsync(args);
+        }
     }
 }
