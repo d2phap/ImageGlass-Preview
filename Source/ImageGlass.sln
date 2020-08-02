@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30310.162
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGlass", "ImageGlass.csproj", "{7DD73283-0445-453D-9523-BCFE0BDF6EE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGlass", ".\ImageGlass\ImageGlass.csproj", "{7DD73283-0445-453D-9523-BCFE0BDF6EE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGlass.Settings", "..\Components\ImageGlass.Settings\ImageGlass.Settings.csproj", "{844F98B3-B9F9-4012-BBAA-C2FBEB966FCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGlass.Settings", ".\Components\ImageGlass.Settings\ImageGlass.Settings.csproj", "{844F98B3-B9F9-4012-BBAA-C2FBEB966FCC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{2319D381-383E-4058-AED7-D9540FD866A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGlass.Base", "..\Components\ImageGlass.Base\ImageGlass.Base.csproj", "{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGlass.Base", ".\Components\ImageGlass.Base\ImageGlass.Base.csproj", "{0A38C4DE-9B3C-446A-9D4B-1CF135C5C833}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
