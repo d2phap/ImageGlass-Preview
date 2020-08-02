@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-namespace ImageGlass.Core.Helpers {
+namespace ImageGlass.Base.Helpers {
     public static class Singleton<T> where T : new() {
         private static ConcurrentDictionary<Type, T> _instances = new ConcurrentDictionary<Type, T>();
 

@@ -263,10 +263,6 @@
       <Project>{844f98b3-b9f9-4012-bbaa-c2fbeb966fcc}</Project>
       <Name>ImageGlass.Settings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ImageGlass.Core\ImageGlass.Core.csproj">
-      <Project>{D8D99740-5189-470C-A7BF-4DF4D86DDDC7}</Project>
-      <Name>ImageGlass.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

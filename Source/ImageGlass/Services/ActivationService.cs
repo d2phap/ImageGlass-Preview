@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using ImageGlass.Activation;
-using ImageGlass.Core.Helpers;
+using ImageGlass.Base.Helpers;
 
 using Windows.ApplicationModel.Activation;
 using Windows.System;
